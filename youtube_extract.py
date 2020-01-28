@@ -17,8 +17,6 @@ def youtubeChannel(channel_url, sub_var, chan_var):
   for c in follow_sum:
       followers = int(returnBase(c.get_text().replace(",", "")))
   return channel_name, followers
-  
- 
 
 def main():
   sub_var = "yt-subscription-button-subscriber-count-branded-horizontal" 
