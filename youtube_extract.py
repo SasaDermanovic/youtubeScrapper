@@ -25,17 +25,17 @@ def main():
   with open("alternative_media.txt") as f:
       content = f.readlines()
   media_outlets = [x.rstrip() for x in content] 
-  channels = {}
+  channels = []
   for a in media_outlets:
     channel_name, followers = youtubeChannel(a, sub_var, chan_var)
-    channels[channel_name] = followers
-    #print(type(channels))here it is a dict 
+    channels.append((channel_name, followers))
   
-  channels = sorted(channels.items(),key=operator.itemgetter(1),reverse=True)
-  #print(type(channels)) for some reason here it is a list of tuples
-  channels = dict(channels)
-  for key,value in channels.items():
-    print(key,value)
+  filename = "top_channels.txt"
+  myfile = open(filename, 'w')
+
+  for key,value in sorted(channels,key=operator.itemgetter(1),reverse = True):
+    myfile.write('{}: {} pretplatnika\n'.format(key, value)) 
   
+  myfile.close()
 if __name__== "__main__":
   main()
